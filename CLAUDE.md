@@ -1,5 +1,10 @@
 # WakeUp v2 — CLAUDE.md
 
+## Rules
+
+- Whenever a design decision is made during conversation — about architecture, module boundaries, schema, features in or out, or any non-obvious implementation choice — add an entry to `decisions.md` immediately. Format: date header, decision title, **Decision:** one sentence, **Why:** one sentence.
+- When implementing any feature, break the work into small, focused tasks. Each task should do one thing, be independently reviewable, and be completable without depending on unfinished sibling tasks. Never bundle unrelated changes into a single task. The goal is that each completed task produces a diff the user can read and understand in under a minute.
+
 ## Project Overview
 
 WakeUp is a personal workspace launcher for Windows. It listens for voice keywords and hotkeys, then spawns and positions apps defined in profile configs. The primary way to create profiles is by capturing the current desktop.
