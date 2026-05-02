@@ -54,6 +54,20 @@ Decisions made during planning and implementation, in chronological order.
 
 ---
 
+### `wakeup.py` is a persistent process, not a profile launcher
+
+**Decision:** `python wakeup.py` starts the app and blocks waiting for triggers. Profiles are never passed at startup.
+**Why:** The app's core model is always-on — profiles fire from hotkeys, voice, or tray. A CLI design that requires a profile at startup would bake in the wrong mental model and conflict with Features 3/4/8.
+
+---
+
+### `--run` flag is a developer convenience only
+
+**Decision:** `python wakeup.py --run <profile>` exists solely to test the skeleton without needing tray/hotkeys/voice. It is not a supported usage pattern.
+**Why:** Feature 1 has no real triggers yet, so testing requires a manual path. Making it a named dev flag (`--run`) keeps it clearly separate from the persistent-process design.
+
+---
+
 ### Tests scoped to preset math and schema validation only
 **Decision:** No tests for tray, hotkeys, win32 calls, or UI.
 **Why:** Those are integration/platform territory that isn't worth mocking. The two things worth testing are pure logic: coordinate calculations and config parsing.
