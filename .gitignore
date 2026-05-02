@@ -1,0 +1,17 @@
+# User configuration — contains personal paths and settings
+profiles.json
+
+# Vosk voice models (large binary files)
+models/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
