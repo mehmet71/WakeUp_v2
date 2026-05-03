@@ -75,6 +75,24 @@ Decisions made during planning and implementation, in chronological order.
 
 ---
 
+### PID-first match with exe-name fallback for window finding
+**Decision:** `_find_hwnd_for_pid` matches windows by owning PID first; if no match, falls back to matching by exe name via psutil.
+**Why:** When a Chromium browser is already running, the new `Popen` spawns a short-lived bootstrap process — the actual window belongs to the existing master process. The exe-name fallback handles this case without special-casing browsers.
+
+---
+
+### Window positioning uses a single shared polling loop, no threads
+**Decision:** All apps are spawned first, then `position_all` polls for all windows simultaneously in one loop — no threads.
+**Why:** The `delay` field already staggers app startup. A single loop checking all pending windows every 10 ms is simpler, covers any number of apps, and avoids thread management entirely. Total wait time equals the slowest app, not the sum.
+
+---
+
+### 10-second polling timeout for window appearance, 10 ms interval
+**Decision:** `position_all` polls every 10 ms for up to 10 seconds before warning and giving up.
+**Why:** 10 ms minimizes the visible flash (window briefly in wrong position before repositioning). 10 s covers slow-starting apps like Electron on first launch.
+
+---
+
 ### Tests scoped to preset math and schema validation only
 **Decision:** No tests for tray, hotkeys, win32 calls, or UI.
 **Why:** Those are integration/platform territory that isn't worth mocking. The two things worth testing are pure logic: coordinate calculations and config parsing.

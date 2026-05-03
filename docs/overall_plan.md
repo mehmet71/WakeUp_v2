@@ -5,7 +5,7 @@
 | # | Feature | Module(s) | Status |
 |---|---------|-----------|--------|
 | 1 | **Walking skeleton** — `profiles.json`, basic process spawn, profile runner, entry point (`python wakeup.py`, dev flag `--run <profile>`) | `profiles.json`, `launcher.py`, `profile_runner.py`, `wakeup.py` | `[x]` |
-| 2 | Window positioning — monitor detection, preset layout math, win32 positioning | `window_manager.py`, `profile_runner.py` | `[ ]` |
+| 2 | Window positioning — monitor detection, preset layout math, win32 positioning | `window_manager.py`, `profile_runner.py` | `[x]` |
 | 3 | Hotkeys + persistent process — pynput hotkey registration, background event loop | `wakeup.py` | `[ ]` |
 | 4 | Tray icon — pystray menu, launch profile, quit | `wakeup.py` | `[ ]` |
 | 5 | Browser block — `urls`, `restore_session`, Chromium args | `launcher.py` | `[x]` |

@@ -14,8 +14,8 @@ def _browser_args(browser: dict) -> list[str]:
     return args
 
 
-# Waits for the app's delay, expands env vars, then spawns the process.
-def spawn(app: dict) -> None:
+# Waits for the app's delay, expands env vars, spawns the process, and returns its PID.
+def spawn(app: dict) -> int | None:
     delay = app.get("delay", 0)
     if delay:
         time.sleep(delay)
@@ -28,4 +28,9 @@ def spawn(app: dict) -> None:
     else:
         args = [os.path.expandvars(a) for a in app.get("args", [])]
 
-    subprocess.Popen([path] + args)
+    try:
+        proc = subprocess.Popen([path] + args)
+        return proc.pid
+    except FileNotFoundError:
+        print(f"[wakeup] warning: executable not found: {path}")
+        return None

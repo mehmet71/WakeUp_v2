@@ -1,6 +1,10 @@
 # User configuration — contains personal paths and settings
 profiles.json
 
+# Planning and known issues (local dev docs)
+docs/plans/
+docs/known_issues.md
+
 # Vosk voice models (large binary files)
 models/
 
