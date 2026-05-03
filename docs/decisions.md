@@ -61,6 +61,13 @@ Decisions made during planning and implementation, in chronological order.
 
 ---
 
+### Browser block handled in `launcher.py` with `--new-window` for fresh sessions
+
+**Decision:** `restore_session: false` maps to `--new-window`; URLs are always appended as positional args. No other Chromium flags are used.
+**Why:** `--new-window` is the minimal flag that reliably opens a fresh window without restoring the previous session. Appending URLs as positional args works for both restore and non-restore cases.
+
+---
+
 ### `--run` flag is a developer convenience only
 
 **Decision:** `python wakeup.py --run <profile>` exists solely to test the skeleton without needing tray/hotkeys/voice. It is not a supported usage pattern.

@@ -8,7 +8,7 @@
 | 2 | Window positioning — monitor detection, preset layout math, win32 positioning | `window_manager.py`, `profile_runner.py` | `[ ]` |
 | 3 | Hotkeys + persistent process — pynput hotkey registration, background event loop | `wakeup.py` | `[ ]` |
 | 4 | Tray icon — pystray menu, launch profile, quit | `wakeup.py` | `[ ]` |
-| 5 | Browser block — `urls`, `restore_session`, Chromium args | `launcher.py` | `[ ]` |
+| 5 | Browser block — `urls`, `restore_session`, Chromium args | `launcher.py` | `[x]` |
 | 6 | Desktop capture — snapshot open windows → draft app records | `capture_service.py` | `[ ]` |
 | 7 | Capture review wizard — review drafts, set name/hotkey, save to `profiles.json` | `capture_ui.py` | `[ ]` |
 | 8 | Voice keywords — Vosk listener, keyword matching | `audio_engine.py` | `[ ]` |

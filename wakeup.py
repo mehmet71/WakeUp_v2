@@ -4,11 +4,13 @@ import sys
 import profile_runner
 
 
+# Reads and parses profiles.json from the working directory.
 def load_profiles() -> dict:
     with open("profiles.json") as f:
         return json.load(f)
 
 
+# Entry point: loads profiles, handles --run dev flag, or blocks waiting for triggers.
 def main() -> None:
     data = load_profiles()
     profiles = data["profiles"]
